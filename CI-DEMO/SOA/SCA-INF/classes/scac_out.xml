@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:component[@name='Process/process_client']</loc>
+      <line/>
+      <col/>
+      <file>D:\SOA\Demo-App\CI-DEMO\SOA\composite.xml</file>
+      <name>D:\SOA\Demo-App\CI-DEMO\SOA\composite.xml</name>
+      <fix/>
+      <msg>The service "process_client" exposed by component "Process" is not wired to/used by any other component.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>63</line>
+      <col/>
+      <file>BPEL/Process.bpel</file>
+      <name>BPEL/Process.bpel</name>
+      <fix>Make sure that value "inputVariable" is resolvable (check imports, value of "variable").</fix>
+      <msg>"variable" is set to "inputVariable" on this &lt;bpel:receive> activity but it cannot be resolved (check value of "variable", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>74</line>
+      <col/>
+      <file>BPEL/Process.bpel</file>
+      <name>BPEL/Process.bpel</name>
+      <fix>Make sure that value "outputVariable" is resolvable (check imports, value of "inputVariable").</fix>
+      <msg>"inputVariable" is set to "outputVariable" on this &lt;bpel:invoke> activity but it cannot be resolved (check value of "inputVariable", imports, WSDLs or XSDs).</msg>
+   </Fault>
+</Faults>

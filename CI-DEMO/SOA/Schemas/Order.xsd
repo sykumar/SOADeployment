@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.example.org"
+            targetNamespace="http://www.example.org" elementFormDefault="qualified">
+  <xsd:element name="LOIPRO_PRO">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="IDOC">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="EDI_DC40">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="TABNAM" type="xsd:string"/>
+                    <xsd:element name="MANDT" type="xsd:integer"/>
+                    <xsd:element name="DOCNUM" type="xsd:integer"/>
+                    <xsd:element name="DOCREL" type="xsd:integer"/>
+                    <xsd:element name="STATUS"/>
+                    <xsd:element name="DIRECT" type="xsd:integer"/>
+                    <xsd:element name="OUTMOD"/>
+                    <xsd:element name="EXPRSS"/>
+                    <xsd:element name="TEST"/>
+                    <xsd:element name="IDOCTYP" type="xsd:string"/>
+                    <xsd:element name="CIMTYP" type="xsd:string"/>
+                    <xsd:element name="MESTYP" type="xsd:string"/>
+                    <xsd:element name="MESCOD" type="xsd:string"/>
+                    <xsd:element name="MESFCT"/>
+                    <xsd:element name="STD"/>
+                    <xsd:element name="STDVRS"/>
+                    <xsd:element name="STDMES"/>
+                    <xsd:element name="SNDPOR" type="xsd:string"/>
+                    <xsd:element name="SNDPRT" type="xsd:string"/>
+                    <xsd:element name="SNDPFC"/>
+                    <xsd:element name="SNDPRN" type="xsd:string"/>
+                    <xsd:element name="SNDSAD"/>
+                    <xsd:element name="SNDLAD"/>
+                    <xsd:element name="RCVPOR" type="xsd:string"/>
+                    <xsd:element name="RCVPRT" type="xsd:string"/>
+                    <xsd:element name="RCVPFC"/>
+                    <xsd:element name="RCVPRN" type="xsd:string"/>
+                    <xsd:element name="RCVSAD"/>
+                    <xsd:element name="RCVLAD"/>
+                    <xsd:element name="CREDAT" type="xsd:integer"/>
+                    <xsd:element name="CRETIM" type="xsd:integer"/>
+                    <xsd:element name="REFINT"/>
+                    <xsd:element name="REFGRP"/>
+                    <xsd:element name="REFMES"/>
+                    <xsd:element name="ARCKEY"/>
+                    <xsd:element name="SERIAL" type="xsd:integer"/>
+                  </xsd:sequence>
+                  <xsd:attribute name="SEGMENT" type="xsd:integer"/>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="E1AFKOL">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="AUFNR" type="xsd:integer"/>
+                    <xsd:element name="FEVOR"/>
+                    <xsd:element name="GAMNG" type="xsd:integer"/>
+                    <xsd:element name="GLTRS" type="xsd:integer"/>
+                    <xsd:element name="GLUZS" type="xsd:integer"/>
+                    <xsd:element name="GMEIN" type="xsd:string"/>
+                    <xsd:element name="GSTRS" type="xsd:integer"/>
+                    <xsd:element name="GSUZS" type="xsd:integer"/>
+                    <xsd:element name="MATNR" type="xsd:integer"/>
+                    <xsd:element name="WERKS" type="xsd:integer"/>
+                    <xsd:element name="E1JSTKL">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="STAT" type="xsd:string"/>
+                        </xsd:sequence>
+                        <xsd:attribute name="SEGMENT" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ZMES_E1AFKOL">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="CHARG" type="xsd:integer"/>
+                          <xsd:element name="RSNUM"/>
+                        </xsd:sequence>
+                        <xsd:attribute name="SEGMENT" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="E1AFFLL">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="E1AFVOL">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="VORNR" type="xsd:integer"/>
+                                <xsd:element name="PVZNR"/>
+                                <xsd:element name="LTXA1" type="xsd:string"/>
+                                <xsd:element name="SSAVD"/>
+                                <xsd:element name="SSAVZ"/>
+                                <xsd:element name="SSEDD"/>
+                                <xsd:element name="SSEDZ"/>
+                                <xsd:element name="ZMES_E1AFVOL">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="ARBPL"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="SEGMENT" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="E1RESBL" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="BDMNG" type="xsd:float"/>
+                                      <xsd:element name="CHARG"/>
+                                      <xsd:element name="MATNR" type="xsd:integer"/>
+                                      <xsd:element name="MEINS" type="xsd:string"/>
+                                      <xsd:element name="POSNR" type="xsd:integer"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="SEGMENT" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="SEGMENT" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="SEGMENT" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="E1AFPOL">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="VERID" type="xsd:string"/>
+                        </xsd:sequence>
+                        <xsd:attribute name="SEGMENT" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="SEGMENT" type="xsd:integer"/>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="BEGIN" type="xsd:integer"/>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

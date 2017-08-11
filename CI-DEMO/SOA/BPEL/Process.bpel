@@ -1,0 +1,76 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Aug 09 17:06:03 IST 2017
+  Author:  sykumar
+  Type: BPEL 2.0 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="Process"
+         targetNamespace="http://xmlns.oracle.com/CI_DEMO/CI_DEMO/Process"
+         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:client="http://xmlns.oracle.com/CI_DEMO/CI_DEMO/Process"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:ui="http://xmlns.oracle.com/soa/designer"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/CI-DEMO/CI-DEMO/ReceiveOrder"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/file/CI-DEMO/CI-DEMO/SendOrder"
+         xmlns:ns3="http://www.example.org">
+    <import namespace="http://www.example.org" location="../Schemas/Order.xsd"
+            importType="http://www.w3.org/2001/XMLSchema"/>
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/CI_DEMO/CI_DEMO/Process" location="../WSDLs/Process.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="process_client" partnerLinkType="client:Process" myRole="ProcessProvider" partnerRole="ProcessRequester"/>
+        <partnerLink name="ReceiveOrder" partnerLinkType="ns1:Read_plt" myRole="Read_role"/>
+        <partnerLink name="SendOrder" partnerLinkType="ns2:Write_plt" partnerRole="Write_role"/>
+    </partnerLinks>
+    <variables>
+        <variable name="In" element="ns3:LOIPRO_PRO"/>
+        <variable name="Out" element="ns3:LOIPRO_PRO"/>
+    </variables>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in Process.wsdl) -->
+        <receive name="receiveOrder" variable="inputVariable" createInstance="yes" partnerLink="ReceiveOrder"
+                 portType="ns1:Read_ptt" operation="Read"/>
+        <assign name="Assign1">
+            <copy>
+                <from>$In</from>
+                <to>$Out</to>
+            </copy>
+        </assign>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <invoke name="sendOrder" inputVariable="outputVariable" bpelx:invokeAsDetail="no" partnerLink="SendOrder"
+                portType="ns2:Write_ptt" operation="Write"/>
+    </sequence>
+</process>
